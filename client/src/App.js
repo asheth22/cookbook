@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+// import { Route, Switch } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
@@ -11,9 +13,9 @@ import Saved from "./pages/Saved";
 // import Logout from "./pages/Logout";
 import "./App.css";
 
-class App extends Component {
+function App() {
  
-  render() {
+  
     return (
       <Router>
         <div className="mainpage">
@@ -30,7 +32,7 @@ class App extends Component {
         </div>
       </Router>
     )
-  };
+  
 };
 
 export default App;
