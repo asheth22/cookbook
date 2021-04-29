@@ -1,0 +1,29 @@
+nav {
+    background-color: darkgreen;
+    border-bottom: 5px solid red;
+    padding: 0%;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(252, 248, 5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique ;
+    font-size: smaller;
+    font-weight: bold;
+}
+ a:hover {
+    text-decoration: underline;
+    color: white
+}
+
+.navbar-brand {
+    font-size: 35px;
+     background-image: url(logo.png);
+     background-repeat: none;
+}
+
+.nav-item {
+    font-size: 25px;
+}
