@@ -1,6 +1,5 @@
 .jumbotron {
     background-image: url(recipes.png);
     background-repeat: none;
-    padding: 0%;
-    margin: 0%;
+    border-bottom: 5px solid rgba(255, 115, 0, 0.356);
 }

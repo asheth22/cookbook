@@ -1,5 +1,6 @@
 nav {
-    background-color: darkgreen;
+    background-image: url("navbackground.png");
+    background-image: -moz-linear-gradient();
     border-bottom: 5px solid red;
     padding: 0%;
     margin: 0;
@@ -7,7 +8,7 @@ nav {
 
 a {
     text-decoration: none;
-    color: rgb(252, 248, 5);
+    color: rgb(247, 199, 127);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: oblique ;
     font-size: smaller;
