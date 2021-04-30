@@ -27,12 +27,7 @@ class Results extends Component {
                 .catch(err => console.error(err));
         }
     }
-    sunmmaryInfo = result => {
-        const html = result.summary;
-         return <div>{ ReactHtmlParser(html) }</div>;
-        
-    }
-    
+       
     render() {
         return (
             <div>
@@ -49,7 +44,7 @@ class Results extends Component {
                                         <div className="col-md-10">
                                             <div className="card-body">
                                                 <h5 className="card-title">{result.title} </h5>
-                                                <p className="card-text">{ result.summary}</p>
+                                                <p className="card-text">{ ReactHtmlParser(result.summary)}</p>
                                                 <div>
                                                     <a href={result.sourceURL} className="btn badge-pill btn-outline-dark mt-3" target="_blank" >View</a>
                                                     <button onClick={() => this.handleSave(result)} className="btn badge-pill btn-outline-success mt-3 ml-3" >
