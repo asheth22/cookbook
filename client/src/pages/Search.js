@@ -6,27 +6,35 @@ import API from "../utils/API";
 class Search extends React.Component {
     state = {
         value: "",
-        books: []
+        recipes: []
     };
-
+    
     componentDidMount() {
-        this.searchBook();
+        this.searchRecipe();
     }
 
-    makeBook = bookData => {
+    makeRecipe = RecipeData => {
+        console.log("Recipedata: ", RecipeData)  
         return {
-            _id: bookData.id,
-            title: bookData.volumeInfo.title,
-            authors: bookData.volumeInfo.authors,
-            description: bookData.volumeInfo.description,
-            image: bookData.volumeInfo.imageLinks.thumbnail,
-            link: bookData.volumeInfo.previewLink
+                      
+                recipeID: RecipeData.recipeID,
+                title: RecipeData.title,
+                image: RecipeData.image,
+                sourceURL: RecipeData.spoonacularSourceUrl    
+            
         }
     }
 
-    searchBook = query => {
-        API.getBook(query)
-            .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
+    searchRecipe = query => {
+        console.log("Inside search recipe: ", query)
+        API.getRecipe(query)
+            .then(res => {
+                console.log(res.data);
+                
+                this.setState({ recipes: res.data.results.map(RecipeData => this.makeRecipe(RecipeData)) })
+                .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
+                // console.log("Recipes created: ", recipes)
+            })
             .catch(err => console.error(err));
     };
 
@@ -36,11 +44,13 @@ class Search extends React.Component {
         this.setState({
             [name]: value
         });
+        console.log("searcing for: ", value);
     };
 
     handleFormSubmit = event => {
+        console.log("inside form submit");
         event.preventDefault();
-        this.searchBook(this.state.search);
+        this.searchRecipe(this.state.search);
     };
 
     render() {
@@ -53,7 +63,7 @@ class Search extends React.Component {
                 />
                 <div className="container">
                     <h2></h2>
-                    <Results books={this.state.books} />
+                    <Results recipes={this.state.recipes} />
                 </div>
             </div>
         )

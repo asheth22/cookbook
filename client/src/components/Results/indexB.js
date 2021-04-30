@@ -1,27 +1,27 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+import API from "../../utils/APIB";
 
 class Results extends Component {
 
     state = {
-        savedrecipes: [],
+        savedBooks: [],
     }
 
     componentDidMount() {
-        API.savedRecipes()
-            .then(savedRecipess => this.setState({ savedRecipess: savedRecipess }))
+        API.savedBooks()
+            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
             .catch(err => console.error(err));
     }
 
-    handleSave = recipe => {
+    handleSave = book => {
 
-        if (this.state.savedrecipes.map(recipe => recipe._id).includes(recipe._id)) {
-            API.deleterecipe(recipe._id)
-                .then(deletedrecipe => this.setState({ savedrecipes: this.state.savedrecipes.filter(recipe => recipe._id !== deletedrecipe._id) }))
+        if (this.state.savedBooks.map(book => book._id).includes(book._id)) {
+            API.deleteBook(book._id)
+                .then(deletedBook => this.setState({ savedBooks: this.state.savedBooks.filter(book => book._id !== deletedBook._id) }))
                 .catch(err => console.error(err));
         } else {
-            API.saverecipe(recipe)
-                .then(savedrecipe => this.setState({ savedrecipes: this.state.savedrecipes.concat([savedrecipe]) }))
+            API.saveBook(book)
+                .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat([savedBook]) }))
                 .catch(err => console.error(err));
         }
     }
@@ -29,11 +29,11 @@ class Results extends Component {
     render() {
         return (
             <div>
-                {!this.props.recipes.length ? (
+                {!this.props.books.length ? (
                     <h1 className="text-center">No Results to Display</h1>
                 ) : (
                         <div>
-                            {this.props.recipes.map(result => (
+                            {this.props.books.map(result => (
                                 <div className="card mb-3" key={result._id}>
                                     <div className="row">
                                         <div className="col-md-2">
@@ -46,7 +46,7 @@ class Results extends Component {
                                                 <div>
                                                     <a href={result.link} className="btn badge-pill btn-outline-dark mt-3" target="_blank" >View</a>
                                                     <button onClick={() => this.handleSave(result)} className="btn badge-pill btn-outline-success mt-3 ml-3" >
-                                                        {this.state.savedrecipes.map(recipe => recipe._id).includes(result._id) ? "Unsave" : "Save"}
+                                                        {this.state.savedBooks.map(book => book._id).includes(result._id) ? "Unsave" : "Save"}
                                                     </button>
                                                 </div>
                                             </div>

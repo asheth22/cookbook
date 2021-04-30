@@ -1,17 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const recipeSchema = new mongoose.Schema({
-  _id: { type: String },
-  title: { type: String },
-  image: { type: String },
-  imageType: { type: String },
-  link: { type: String },
-  nutrition: [{
+const recipeSchema = new Schema({
+    _id: { type: String },
+    recipeID: { type: Number},
     title: { type: String },
-    amount: { type: Number },
-    unit: { type: String }
-  }]
+    image: { type: String },   
+    summary: { type: String },    
+    sourceURL: { type: String }
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
