@@ -20,6 +20,7 @@ class Search extends React.Component {
                 recipeID: RecipeData.recipeID,
                 title: RecipeData.title,
                 image: RecipeData.image,
+                summary:  RecipeData.summary, 
                 sourceURL: RecipeData.spoonacularSourceUrl    
             
         }
