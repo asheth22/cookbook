@@ -1,7 +1,8 @@
 import React from "react";
 
-function Card(props) {
- return (
+
+const Card = (props) => (
+
   <div className="card">
     <div className="card-header bg-info" style={{color: '#fff'}}>
       <h5>{props.title}</h5>
@@ -11,6 +12,5 @@ function Card(props) {
     </div>
   </div>
 ) 
-}
-
 export default Card;
+

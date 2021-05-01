@@ -1,15 +1,16 @@
 ## Description
 
-React-based Google Books Search app that displays books on user searches. Users can save them to review or purchase later. 
+My Cookbook is a React-based app that allows users to search for recipes and save them for future reference. 
 
-`Save` button to save the book to the database.<br>
-`View` button to view the book on Google Books.
+`Save` button to save the recipe to the database.<br>
+Click on the recipe to be taken to the recipe's webpage.
 
-This App is deployed on Heroku: [Google Books Search](https://immense-chamber-63705.herokuapp.com/)
+This App is deployed on Heroku: [My Cookbook](https://immense-chamber-63705.herokuapp.com/) 
+<!-- Remember to change this -->
 
 ## Application Features
 
-In this application the user is able to search for books using google's API. The application will display the results. The user can view the book summary or save the books. The saved books can be viewed using the "Saved" option from the Navigation bar.
+In this application the user is able to search for recipes using Spoonacular's API. The application will display the results. The user can view the recipe summary and save the books. The saved books can be viewed using the "Saved" option from the Navigation bar.
 ## Technologies used
 
 ```

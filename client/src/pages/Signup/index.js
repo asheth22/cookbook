@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Container, Row, Col } from '../../../Grid';
-
-function SignupForm() {
+import React, { useEffect, useState } from "react";
+import { Redirect, Link } from 'react-router-dom';
+import Card from "../../components/Card";
+// import Input from "../../Input";
+import { Input, FormBtn } from '../../components/FormSignup';
+import AUTH from '../../utils/AUTH';
+function Signup() {
     const [userObject, setuserObject] = useState({
         firstName: "",
         lastName: "",
@@ -22,7 +25,7 @@ function SignupForm() {
     const handleFormSubmit = event => {
         event.preventDefault();
         if (userObject.email && userObject.password) {
-            API.saveUser({
+            AUTH.signup({
                 firstName: userObject.firstName,
                 lastName: userObject.lastName,
                 email: userObject.email,
@@ -37,11 +40,11 @@ function SignupForm() {
 
     return (
         <div className="login">
-        <Container className="zindex1">
-          <Row className="zindex1">
-            <Col className="zindex1" size="md-3"></Col>
-            <Col className="zindex1" size="md-6">
-              <Card className="zindex1" title="Register for mycookbook">
+        <div className="container zindex1">
+          <div className="row zindex1">
+            <div className="col-md-3 zindex1"></div> 
+            <div className="col-md-6 zindex1" >
+              <Card className="zindex1" title="Welcome to mycookbook">
                 <form className="zindex1" style={{marginTop: 10}}>
                   <h1>Register for mycookbook!</h1>
                   <label htmlFor="username">First name: </label>
@@ -73,16 +76,15 @@ function SignupForm() {
                     onChange={handleChange}
                   />
                   
-                  <Link to="/">Login</Link>
+                  <Link to="/login">Login Here</Link>
                   <FormBtn onClick={handleFormSubmit}>Register</FormBtn>
                 </form>
-              </Card>
-            </Col>
-            <Col size="md-3"></Col>
-          </Row>
-        </Container>
+              </Card>            
+              </div>
+          </div>
+        </div>
         
         </div>
-          )
+     )
 }
-export default SignupForm
+export default Signup
