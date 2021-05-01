@@ -18,7 +18,7 @@ export default {
       }
 
       req.user = user;
-      // DEBUG(user.userName);
+     DEBUG(user.userName);
       return next();
     })(req, res, next);
   },
