@@ -12,7 +12,8 @@ import Saved from "./pages/Saved";
 // import Login from "./pages/LoginForm";
 // import Logout from "./pages/Logout";
 import "./App.css";
-
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 function App() {
  
   
@@ -22,11 +23,11 @@ function App() {
           <NavBar />
           <Header />
           <Wrapper>
-            <Route exact path="/" component={Search} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
-            {/* <Route exact path="/saved" component={Login} />
-            <Route exact path="/saved" component={Logout} /> */}
+            <Route exact path="/saved" component={Signup} /> 
+            {/* <Route exact path="/saved" component={Logout} />  */}
             <Route exact path="/noMatch" component={NoMatch} />
           </Wrapper>
         </div>
