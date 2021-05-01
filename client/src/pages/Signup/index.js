@@ -36,7 +36,7 @@ function Signup() {
                 password: userObject.password
             })
                 .then(() => setuserObject({
-                    redirectTo: "'/"
+                    redirectTo: "/search"
                 }))
                 .catch(err => console.log(err));
         }
