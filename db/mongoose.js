@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
-import { config } from "dotenv";
-import debug from "debug";
+const mongoose = require("mongoose");
+const config = require("dotenv");
+const debug = require("debug");
 
-config();
+// config();
 const DEBUG = debug("dev");
 
 const { NODE_ENV, DEV_DB } = process.env;

@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const recipesController = require("../../controllers/recipesControllers");
-
+const recipesController = require("../../controllers/recipescontroller");
+console.log("inside routes"); 
 // Matches with "/api/books"
 router.route("/")
   .get(recipesController.findAll)

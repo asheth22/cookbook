@@ -1,7 +1,7 @@
 {
-  "name": "google-books",
+  "name": "cookbook",
   "version": "0.1.0",
-  "description": "Google Books",
+  "description": "cookbook",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
