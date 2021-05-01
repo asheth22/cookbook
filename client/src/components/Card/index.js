@@ -1,6 +1,8 @@
 import React from "react";
 
+
 const Card = (props) => (
+
   <div className="card">
     <div className="card-header bg-info" style={{color: '#fff'}}>
       <h5>{props.title}</h5>
@@ -9,6 +11,6 @@ const Card = (props) => (
       {props.children}
     </div>
   </div>
-);
+) 
+export default Card;
 
-export default Card; 
