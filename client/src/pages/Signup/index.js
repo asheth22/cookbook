@@ -4,6 +4,8 @@ import Card from "../../components/Card";
 // import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
+
+
 function Signup() {
     const [userObject, setuserObject] = useState({
         firstName: "",
@@ -25,7 +27,8 @@ function Signup() {
     const handleFormSubmit = event => {
         console.log("Inside signup form submit", userObject)
         event.preventDefault();
-        if (userObject.email && userObject.password) {
+       if (userObject.email && userObject.password) {
+           console.log("Email and password entered")
             AUTH.signup({
                 firstName: userObject.firstName,
                 lastName: userObject.lastName,
@@ -62,11 +65,11 @@ function Signup() {
                     value={userObject.lastName}
                     onChange={handleChange}
                   />
-                  <label htmlFor="username">Username: </label>
+                  <label htmlFor="username">email: </label>
                   <Input
                     type="text"
-                    name="username"
-                    value={userObject.username}
+                    name="email"
+                    value={userObject.email}
                     onChange={handleChange}
                   />
                   <label htmlFor="password">Password: </label>

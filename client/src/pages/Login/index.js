@@ -50,7 +50,7 @@ function Login() {
                 <form className="zindex1" style={{marginTop: 10}}>
                   <h1>Login to mycookbook!</h1>
                   
-                  <label htmlFor="username">Username: </label>
+                  <label htmlFor="email">email: </label>
                   <Input
                     type="text"
                     name="username"
