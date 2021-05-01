@@ -10,14 +10,17 @@ class Search extends React.Component {
     };
     
     componentDidMount() {
-        this.searchRecipe();
+        console.log("Inside componenetmount on search.js")
+        API.savedRecipes()
+            .then(savedRecipes => this.setState({ recipes: savedRecipes }))
+            .catch(err => console.error(err));
     }
 
     makeRecipe = RecipeData => {
         console.log("Recipedata: ", RecipeData)  
         return {
                       
-                recipeID: RecipeData.recipeID,
+                _id: RecipeData.id,
                 title: RecipeData.title,
                 image: RecipeData.image,
                 summary:  RecipeData.summary, 
@@ -30,11 +33,8 @@ class Search extends React.Component {
         console.log("Inside search recipe: ", query)
         API.getRecipe(query)
             .then(res => {
-                console.log(res.data);
-                
+                console.log(res.data);                
                 this.setState({ recipes: res.data.results.map(RecipeData => this.makeRecipe(RecipeData)) })
-                .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
-                // console.log("Recipes created: ", recipes)
             })
             .catch(err => console.error(err));
     };
@@ -64,6 +64,7 @@ class Search extends React.Component {
                 />
                 <div className="container">
                     <h2></h2>
+                
                     <Results recipes={this.state.recipes} />
                 </div>
             </div>

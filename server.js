@@ -1,13 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-import http from "http";
-import debug from "debug";
-import { config } from "dotenv";
-import app from "./app";
-import './db/mongoose'
+// import http from "http";
+// import debug from "debug";
+// import { config } from "dotenv";
+// import app from "./app";
+// import './db/mongoose'
+const http = require("http");
+const debug = require("debug");
+const dotenv = require("dotenv");
+// const app = require("./app");
+// require("./db/mongoose"); 
 
-config();
+dotenv.config();
 
 const DEBUG = debug("dev");
 const PORT = process.env.PORT || 3001;
@@ -28,7 +33,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes)
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/recipes",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

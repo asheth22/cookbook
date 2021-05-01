@@ -16,14 +16,21 @@ class Results extends Component {
     }
 
     handleSave = recipe => {
-
+        console.log("Inside handle save with input: ", recipe)
+        console.log("saving recipe_id ", recipe._id)
         if (this.state.savedrecipes.map(recipe => recipe._id).includes(recipe._id)) {
+            console.log("Inside if")
             API.deleterecipe(recipe._id)
                 .then(deletedrecipe => this.setState({ savedrecipes: this.state.savedrecipes.filter(recipe => recipe._id !== deletedrecipe._id) }))
                 .catch(err => console.error(err));
         } else {
-            API.saverecipe(recipe)
-                .then(savedrecipe => this.setState({ savedrecipes: this.state.savedrecipes.concat([savedrecipe]) }))
+            console.log("inside else", recipe)
+            API.saveRecipe(recipe)
+                .then(savedrecipe => {
+                    console.log("after API ", recipe);
+                    this.setState({ savedrecipes: this.state.savedrecipes.concat([savedrecipe]) });
+                   
+                })
                 .catch(err => console.error(err));
         }
     }
