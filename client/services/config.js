@@ -5,7 +5,10 @@ import User from '../../models/user.model';
 
 config()
 
-const jwtPublicSecret = process.env.JWT_PUBLIC_SECRET.replace(/\\n/g, '\n');
+const jwtPublicSecret = `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGKOLhzmEwYAMAGdIu/UBn5tO9
+rHS50DVo9LwDXGF2BsSnfYGgHZcZY+ASAeoZqUDEFOqn2sNxPCfGzfSWtZQBAdWV
+qH37WZQIOb8dfg104vllatq6kkRnrul9L6SbO9Skl23UnhIo8BMpaB1RD4cc3NIB
+NVHAtt+aFdVP81gKYQIDAQAB`.replace(/\\n/g, '\n');
 
 const cookieExtractor = req => {
   let token = null;

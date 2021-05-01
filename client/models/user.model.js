@@ -28,16 +28,22 @@ const userSchema = new mongoose.Schema({
     unique: true
 
   },
-  userName: {
+  firstName: {
     type: String,
-    required: [true, 'userName is required'],
-    unique: true
+    required: [true, 'firstName is required'],
+    unique: false
+  },
+  lastName: {
+    type: String,
+    required: [true, 'lastName is required'],
+    unique: false
   },
   password: {
     type: String,
     required: [true, "password is required"],
     minlength: 8,
   },
+  joinRecipe : [{type: Schema.Types.ObjectId, ref: 'Recipe' }]
 });
 
 userSchema.pre("save", async function (next) {
