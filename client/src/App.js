@@ -25,12 +25,11 @@ function App() {
             <Route exact path="/" component={Search} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
-            {/* <Route exact path="/saved" component={Login} />
-            <Route exact path="/saved" component={Logout} /> */}
+            {/* <Route exact path="/saved" component={Login} />  */}
+            {/* <Route exact path="/saved" component={Logout} /> */} 
             <Route exact path="/noMatch" component={NoMatch} />
           </Wrapper>
-        </div>
-      </Router>
+        </div>      </Router>
     )
   
 };

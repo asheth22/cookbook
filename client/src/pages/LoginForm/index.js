@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from '../Grid';
+import { Container, Row, Col } from '../../components/Grid';
+import Card from '../../components/Card';
+import Input from '../../components/Input';
 
 function SignupForm() {
     const [userObject, setuserObject] = useState({
