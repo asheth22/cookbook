@@ -23,6 +23,7 @@ function Signup() {
     };
 
     const handleFormSubmit = event => {
+        console.log("Inside signup form submit")
         event.preventDefault();
         if (userObject.email && userObject.password) {
             AUTH.signup({
