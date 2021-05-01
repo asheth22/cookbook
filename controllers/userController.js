@@ -11,27 +11,38 @@ module.exports = {
       return res.json({ user: null });
     }
   },
-  register: (req, res) => {
-    console.log("Inside register: ", req.body);
-    const { firstName, lastName, email, password } = req.body;
-    // ADD VALIDATION
-    db.User.findOne({ 'username': username }, (err, userMatch) => {
-      if (userMatch) {
-        return res.json({
-          error: `Sorry, already a user with the username: ${username}`
-        });
-      }
-      const newUser = new db.User({
-        'firstName': firstName,
-        'lastName': lastName,
-        'email': email,
-        'password': password
+  // register: (req, res) => {
+  //   console.log("Inside register: ", req.body);
+  //   const { firstName, lastName, email, password } = req.body;
+  //   // ADD VALIDATION
+  //   // db.User.findOne({ 'email': email }, (err, userMatch) => {
+  //   //   if (userMatch) {
+  //   //     return res.json({
+  //   //       error: `Sorry, already a user with the username: ${email}`
+  //   //     });
+  //   //   }
+  //     const newUser = new db.User({
+  //       'firstName': firstName,
+  //       'lastName': lastName,
+  //       'email': email,
+  //       'password': password
+  //     });
+  //     newUser.save((err, savedUser) => {
+  //       if (err) return res.json(err);
+  //       return res.json(savedUser);
+  //     });
+  //   // });
+  // },
+
+  register: function (req, res) {
+    console.log("inside create: ", req.body)
+    db.User
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.error(err)
+        res.status(422).json(err)
       });
-      newUser.save((err, savedUser) => {
-        if (err) return res.json(err);
-        return res.json(savedUser);
-      });
-    });
   },
   logout: (req, res) => {
     if (req.user) {
