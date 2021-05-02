@@ -32,7 +32,7 @@ function App() {
           </Wrapper>
         </div>      </Router>
     )
-  
+  //This is an update
 };
 
 export default App;
