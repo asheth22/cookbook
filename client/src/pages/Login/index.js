@@ -24,17 +24,21 @@ function Login() {
         })
     };
 
-    const handleFormSubmit = event => {
+  const handleFormSubmit = event => {
+      console.log("Inside login formsubmit ", userObject)
         event.preventDefault();
-        if (userObject.email && userObject.password) {
-            AUTH.signup({
-                firstName: userObject.firstName,
-                lastName: userObject.lastName,
+    if (userObject.email && userObject.password) {
+          console.log("email and password entered")
+            AUTH.login({
+
                 email: userObject.email,
                 password: userObject.password
             })
-                .then(() => setuserObject({
-                    redirectTo: "'/"
+              .then(() => setuserObject({
+                ...userObject,
+                firstName: userObject.firstName,
+                lastName: userObject.lastName,
+                    redirectTo: "/search"
                 }))
                 .catch(err => console.log(err));
         }
