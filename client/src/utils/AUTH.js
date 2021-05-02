@@ -11,7 +11,8 @@ export default {
     return axios.post('/auth/logout');
   },
   // Log the user in
-  login: function(username, password) {
+  login: function (username, password) {
+    console.log("login path")
     return axios.post('/auth/login', { username, password });
   },
   // New user registration
