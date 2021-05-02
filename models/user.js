@@ -1,18 +1,40 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
+mongoose.promise = Promise;
 
+// Define userSchema
 const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true
-  },
-  savedRecipes: {
-      //User's saved recipes go in an array?
-      //Maybe just links to actual recipe?
-      recipes: []
-  }
+  firstName: { type: String, unique: false },
+  lastName: { type: String, unique: false },
+  email: { type: String, unique: true, required: false },
+  password: { type: String, unique: false, required: false },
+ 
+  joinRecipe : [{type: Schema.Types.ObjectId, ref: 'Recipe' }], //trying to get user view to work
+  
 });
 
-const User = mongoose.model("User", userSchema);
+// Define schema methods
+userSchema.methods = {
+	checkPassword: function(inputPassword) {
+		return bcrypt.compareSync(inputPassword, this.password);
+	},
+	hashPassword: plainTextPassword => {
+		return bcrypt.hashSync(plainTextPassword, 10);
+	}
+};
 
+// Define hooks for pre-saving
+userSchema.pre('save', function(next) {
+	if (!this.password) {
+		console.log('No password provided!');
+		next();
+	} else {
+		this.password = this.hashPassword(this.password);
+		next();
+	}
+})
+
+// Create reference to User & export
+const User = mongoose.model('User', userSchema);
 module.exports = User;

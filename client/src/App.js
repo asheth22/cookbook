@@ -9,11 +9,12 @@ import Wrapper from "./components/Wrapper";
 import NoMatch from "./pages/NoMatch";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
-// import Login from "./pages/LoginForm";
+
 // import Logout from "./pages/Logout";
 import "./App.css";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+
 function App() {
  
   
@@ -23,15 +24,15 @@ function App() {
           <NavBar />
           <Header />
           <Wrapper>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Signup} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
-            <Route exact path="/saved" component={Signup} /> 
+            <Route exact path="/signup" component={Signup} /> 
             <Route exact path="/noMatch" component={NoMatch} />
           </Wrapper>
         </div>      </Router>
     )
-  
+  //This is an update
 };
 
 export default App;
