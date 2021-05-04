@@ -23,7 +23,7 @@ function Signup() {
     };
 
     const handleFormSubmit = event => {
-        console.log("Inside signup form submit")
+        console.log("Inside signup form submit ", userObject)
         event.preventDefault();
         if (userObject.email && userObject.password) {
             AUTH.signup({
@@ -32,7 +32,7 @@ function Signup() {
                 email: userObject.email,
                 password: userObject.password
             })
-                .then(() => setuserObject({
+              .then(() => setuserObject({                    
                     redirectTo: "'/"
                 }))
                 .catch(err => console.log(err));
@@ -62,11 +62,11 @@ function Signup() {
                     value={userObject.lastName}
                     onChange={handleChange}
                   />
-                  <label htmlFor="username">Username: </label>
+                  <label htmlFor="email">email: </label>
                   <Input
                     type="text"
-                    name="username"
-                    value={userObject.username}
+                    name="email"
+                    value={userObject.email}
                     onChange={handleChange}
                   />
                   <label htmlFor="password">Password: </label>

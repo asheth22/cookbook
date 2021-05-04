@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
-            <Route exact path="/saved" component={Signup} /> 
+            <Route exact path="/Signup" component={Signup} /> 
             <Route exact path="/noMatch" component={NoMatch} />
           </Wrapper>
         </div>      </Router>

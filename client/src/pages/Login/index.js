@@ -24,19 +24,18 @@ function Login() {
         })
     };
 
-    const handleFormSubmit = event => {
+  const handleFormSubmit = event => {
+      console.log("Inside login form submit: ", userObject)
         event.preventDefault();
         if (userObject.email && userObject.password) {
-            AUTH.signup({
-                firstName: userObject.firstName,
-                lastName: userObject.lastName,
-                email: userObject.email,
-                password: userObject.password
-            })
-                .then(() => setuserObject({
-                    redirectTo: "'/"
-                }))
-                .catch(err => console.log(err));
+          AUTH.login({
+            email: userObject.email,
+            password: userObject.password
+          })
+            .then(res => {
+              console.log(res);            
+              window.location.href = '/search'
+            })               
         }
     };
 
@@ -50,11 +49,11 @@ function Login() {
                 <form className="zindex1" style={{marginTop: 10}}>
                   <h1>Login to mycookbook!</h1>
                   
-                  <label htmlFor="username">Username: </label>
+                  <label htmlFor="email">email: </label>
                   <Input
                     type="text"
-                    name="username"
-                    value={userObject.username}
+                    name="email"
+                    value={userObject.email}
                     onChange={handleChange}
                   />
                   <label htmlFor="password">Password: </label>

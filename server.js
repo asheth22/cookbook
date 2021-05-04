@@ -1,25 +1,13 @@
 const express = require("express");
+const app = express();
+const db = require("./models");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-// import http from "http";
-// import debug from "debug";
-// import { config } from "dotenv";
-// import app from "./app";
-// import './db/mongoose'
-const http = require("http");
-const debug = require("debug");
-const dotenv = require("dotenv");
-// const app = require("./app");
-// require("./db/mongoose"); 
-
-dotenv.config();
-
-const DEBUG = debug("dev");
+const passport = require("passport");
+const session = require("express-session")
 const PORT = process.env.PORT || 3001;
-const app = express();
 
-const server = http.createServer(app);
-
+require("./config/passport")(passport)
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,6 +17,14 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.use(morgan('common'))
+
+// THIS IS REALLY IMPORTANT FOR ROUTING CLIENT SIDE
+// We want to have our app to use the build directory 
+app.use(express.static(__dirname + '/client/build'))
 // Define API routes here
 app.use(routes)
 
@@ -41,27 +37,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/recipes",
     useFindAndModify: false
   });
 
-  
-process.on("uncaughtException", (error) => {
-  DEBUG(`uncaught exception: ${error.message}`);
-  process.exit(1);
+app.listen(PORT, () => {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
-
-process.on("unhandledRejection", (err) => {
-  DEBUG(err);
-  DEBUG("Unhandled Rejection:", {
-    name: err.name,
-    message: err.message || err,
-  });
-  process.exit(1);
-});
-
-server.listen(PORT, () => {
-  DEBUG(
-    `server running on http://localhost:${PORT} in ${process.env.NODE_ENV} mode`
-  );
-});
-
-// app.listen(PORT, () => {
-//   console.log(`🌎 ==> API server now on port ${PORT}!`);
-// });

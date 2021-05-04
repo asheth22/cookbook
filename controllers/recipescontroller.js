@@ -3,7 +3,7 @@ console.log("inside recipe controller")
 // Defining methods for the booksController
 module.exports = {
   findAll: function (req, res) {
-    
+    console.log("inside findall")
     db.Recipe
       .find(req.query)      
       .then(dbModel => res.json(dbModel))
