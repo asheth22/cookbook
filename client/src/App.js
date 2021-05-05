@@ -31,7 +31,9 @@ function App() {
     }   
     const userState = {
         registeredUser: loggedIn,
-        user:   userObject
+        user: userObject,
+        setuserObject,
+        setloggedIn
     }  
 
       return (

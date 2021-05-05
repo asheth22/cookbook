@@ -40,12 +40,15 @@ function Login() {
           })
             .then(res => {
               console.log(res.user.email);
+              myContext.setuserObject(res.user);
               myContext.user.firstName = res.user.firstName;
               myContext.user.lastName = res.user.lastName;
               myContext.user.email = res.user.email;
               myContext.user.password = res.user.password;
               console.log("mycontext user after login: ", myContext.user)
-              // window.location.href = '/search'
+              myContext.setuserObject(res.user);
+              console.log("mycontext user setUserObject: ", myContext.user)
+              window.location.href = '/search'
             })               
         }
   };
