@@ -1,11 +1,17 @@
 
 import React, { useEffect, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from '../../components/AppContext';
+
 import Card from "../../components/Card";
+
 // import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
 function Login() {
+
+  const myContext = useContext(AppContext);
 
     const [userObject, setuserObject] = useState({
         firstName: "",
@@ -33,11 +39,23 @@ function Login() {
             password: userObject.password
           })
             .then(res => {
-              console.log(res);            
-              window.location.href = '/search'
+              console.log(res.user.email);
+              myContext.user.firstName = res.user.firstName;
+              myContext.user.lastName = res.user.lastName;
+              myContext.user.email = res.user.email;
+              myContext.user.password = res.user.password;
+              console.log("mycontext user after login: ", myContext.user)
+              // window.location.href = '/search'
             })               
         }
-    };
+  };
+  
+  useEffect(() => {   
+      
+    console.log("mycontect variables registreed: ", myContext.registeredUser);
+    console.log("mycontect variables registreed: ", myContext.user);
+    
+    }, []);
 
     return (
         <div className="login">
@@ -55,6 +73,7 @@ function Login() {
                     name="email"
                     value={userObject.email}
                     onChange={handleChange}
+                    // onChange={myContext.setUser}
                   />
                   <label htmlFor="password">Password: </label>
                   <Input
@@ -62,6 +81,7 @@ function Login() {
                     name="password"
                     value={userObject.password}
                     onChange={handleChange}
+                    // onChange={myContext.setUser}
                   />
                   
                   <Link to="/">Signup</Link>

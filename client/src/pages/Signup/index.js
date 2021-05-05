@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from '../../components/AppContext';
 import Card from "../../components/Card";
 // import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
 function Signup() {
+
+  const myContext = useContext(AppContext);
+
     const [userObject, setuserObject] = useState({
         firstName: "",
         lastName: "",
@@ -32,10 +37,15 @@ function Signup() {
                 email: userObject.email,
                 password: userObject.password
             })
-              .then(() => setuserObject({                    
-                    redirectTo: "'/"
-                }))
-                .catch(err => console.log(err));
+             .then(res => {
+              console.log(res);
+              myContext.user.firstName = res.firstName;
+              myContext.user.lastName = res.lastName;
+              myContext.user.email = res.email;
+              myContext.user.password = res.password;
+              console.log("mycontext user after signup: ", myContext.user)
+              // window.location.href = '/search'
+            })     
         }
     };
 
