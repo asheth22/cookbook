@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 // import { Route, Switch } from 'react-router-dom';
-import AppContext from './components/AppContext';
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
@@ -16,26 +15,31 @@ import "./App.css";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import AUTH from "./utils/AUTH";
+function App() {
+ 
+  const [userState, setuserState] = useState({
+    loggedIn: false,
+		user: null
+  })
+  useEffect(() => {
+    
+    AUTH.getUser().then(response => {      
+      console.log(response.data);
+      if (response.data) {
+        setuserState({
+          loggedIn: true,
+          user: response.data
+        })
+        console.log("userState: ", userState)
+      }
+        else {
+          console.log("no user is logged in", userState)
+        }
+      })  
+    }, []);
+ 
 
-function App() {  
-    const [userObject, setuserObject] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",       
-      })
-    const [loggedIn, setloggedIn] = useState(false);    
-    const setUser = () => {
-
-
-    }   
-    const userState = {
-        registeredUser: loggedIn,
-        user:   userObject
-    }  
-
-      return (
-      <AppContext.Provider value={userState}>
+    return (
       <Router>
         <div className="mainpage">
           <NavBar />
@@ -48,10 +52,9 @@ function App() {
             <Route exact path="/noMatch" component={NoMatch} />
           </Wrapper>
         </div>
-        </Router>
-        </AppContext.Provider> 
+      </Router>
     )
-     
+  
 };
 
 export default App;

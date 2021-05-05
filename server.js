@@ -7,7 +7,7 @@ const passport = require("passport");
 const session = require("express-session")
 const PORT = process.env.PORT || 3001;
 
-require("./config/passport")(passport)
+// require("./config/passport")(passport)
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
