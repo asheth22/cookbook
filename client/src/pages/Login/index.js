@@ -35,6 +35,7 @@ function Login() {
             .then(res => {
               console.log(res);            
               window.location.href = '/search'
+              
             })               
         }
     };
@@ -66,6 +67,7 @@ function Login() {
                   
                   <Link to="/">Signup</Link>
                   <FormBtn onClick={handleFormSubmit}>login</FormBtn>
+                  <Redirect to="/search"></Redirect>
                 </form>
               </Card>            
               </div>

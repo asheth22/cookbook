@@ -6,7 +6,8 @@ const recipeSchema = new Schema({
     title: { type: String },
     image: { type: String },   
     summary: { type: String },    
-    sourceURL: { type: String }
+    sourceURL: { type: String },
+    email: { type: String }
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
