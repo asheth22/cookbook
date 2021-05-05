@@ -1,75 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Redirect, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from '../components/AppContext';
+
 import Form from "../components/Form";
 import Results from "../components/Results";
 import API from "../utils/API";
 
-class Search extends React.Component {
-    state = {
-        value: "",
-        recipes: []
-    };
-    
-    componentDidMount() {
-        console.log("Inside componenetmount on search.js")
-        API.savedRecipes()
-            .then(savedRecipes => this.setState({ recipes: savedRecipes }))
-            .catch(err => console.error(err));
-    }
+function Search() {
 
-    makeRecipe = RecipeData => {
-        console.log("Recipedata: ", RecipeData)  
+    const myContext = useContext(AppContext);
+    const [value, setvalue] = useState("");
+    const [recipes, setrecipes] = useState({
+        _id: "",
+        title: "",
+        image: "",
+        summary:  "",
+        sourceURL: "",
+        email: ""
+      })
+        
+    useEffect(() => {
+        console.log("Inside useEffect on search.js", myContext.user)
+        API.savedRecipes()
+            .then(savedRecipes => setrecipes(savedRecipes))          
+        }, []); 
+
+    const makeRecipes = RecipeData => {
+        console.log("Recipedata: ", RecipeData)
+        
         return {
                       
                 _id: RecipeData.id,
                 title: RecipeData.title,
                 image: RecipeData.image,
                 summary:  RecipeData.summary, 
-                sourceURL: RecipeData.spoonacularSourceUrl    
+                sourceURL: RecipeData.spoonacularSourceUrl,
+                email: myContext.user.email
             
         }
     }
 
-    searchRecipe = query => {
+    const searchRecipe = query => {
         console.log("Inside search recipe: ", query)
+        console.log("mycontect inside search recipe: ", myContext.user)
         API.getRecipe(query)
             .then(res => {
-                console.log(res.data);                
-                this.setState({ recipes: res.data.results.map(RecipeData => this.makeRecipe(RecipeData)) })
+                console.log(res.data.results);
+                console.log("before setrecipes", recipes)
+                const newRecipes = res.data.results.map(RecipeData => makeRecipes(RecipeData))
+                // setrecipes({ recipes: res.data.results.map(RecipeData => makeRecipes(RecipeData)) })
+                console.log("after makerecipes", newRecipes)
+                setrecipes(newRecipes)
+                console.log("recipes set:", recipes)
             })
-            .catch(err => console.error(err));
+            
     };
 
-    handleInputChange = event => {
+    const handleInputChange = event => {
         const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-        console.log("searcing for: ", value);
+        const inputValue = event.target.value;
+        setvalue(inputValue)
+        console.log("searcing for: ", inputValue);
     };
 
-    handleFormSubmit = event => {
+    const handleFormSubmit = event => {
         console.log("inside form submit");
         event.preventDefault();
-        this.searchRecipe(this.state.search);
+        searchRecipe(value);
+        console.log("Done with recipe search", recipes)
     };
 
-    render() {
+ 
         return (
             <div>
+               
                 <Form
-                    search={this.state.search}
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                />
+                    search={value}
+                    handleInputChange={handleInputChange}
+                    handleFormSubmit={handleFormSubmit}                />
+                    
                 <div className="container">
-                    <h2></h2>
-                
-                    <Results recipes={this.state.recipes} />
+                    <h2></h2>                
+                    <Results recipes={recipes} />
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default Search;

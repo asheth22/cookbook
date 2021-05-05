@@ -10,6 +10,7 @@ class Results extends Component {
     }
 
     componentDidMount() {
+        console.log("inside results componenet mount")
         API.savedRecipes()
             .then(savedRecipess => this.setState({ savedRecipess: savedRecipess }))
             .catch(err => console.error(err));
