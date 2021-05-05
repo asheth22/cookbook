@@ -26,3 +26,15 @@ The app uses the following technologies:
 
 `Save` button to save the recipe to the database.<br>
 Click on the recipe to be taken to the recipe's webpage.
+
+## Screenshots
+![Blank Signup Page](./pictures/signup_blank)
+![Filled Signup Page](./pictures/signup_filled)
+![Blank Login Page](./pictures/login_blank)
+![Filled Login Page](./pictures/login_filled)
+![Blank Search Page](./pictures/search_blank)
+![Search Results](./pictures/search_results)
+![Click on View](./pictures/search_results_view)
+![View Full Recipe](./pictures/goto_recipe)
+![Click on Save](./pictures/search_results_save)
+![Saved Recipes](./pictures/saved_recipes)
