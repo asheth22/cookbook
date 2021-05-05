@@ -14,9 +14,20 @@ import Saved from "./pages/Saved";
 import "./App.css";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import AUTH from "./utils/AUTH";
 function App() {
  
+  const [userState, setuserState] = useState({
+    loggedIn: false,
+		user: null
+  })
   
+  useEffect() => {
+    AUTH.getUser().then(response => {
+      console.log(response.daata)
+    })
+  }
+
     return (
       <Router>
         <div className="mainpage">
