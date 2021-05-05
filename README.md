@@ -22,5 +22,7 @@ The app uses the following technologies:
 > react-html-parser
 
 ## Usage
+
+
 `Save` button to save the recipe to the database.<br>
 Click on the recipe to be taken to the recipe's webpage.
