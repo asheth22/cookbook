@@ -14,10 +14,9 @@ function Signup() {
         firstName: "",
         lastName: "",
         email: "",
-        password: "",
-        redirectTo: ""
+        password: "",        
       })
-
+    const [redirect, setredirect] = useState("")  
     const handleChange = event => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -33,30 +32,36 @@ function Signup() {
         if (userObject.email && userObject.password) {
             AUTH.signup({
                 firstName: userObject.firstName,
-                lastName: userObject.lastName,
+                lastName: userObject.firstName,
                 email: userObject.email,
                 password: userObject.password
             })
              .then(res => {
-              console.log(res);
-              myContext.user.firstName = res.firstName;
-              myContext.user.lastName = res.lastName;
-              myContext.user.email = res.email;
-              myContext.user.password = res.password;
+               console.log(res);
+               myContext.setuserObject(userObject);
+               console.log("userobject", userObject)
+              // myContext.user.firstName = userObject.firstName,
+              // myContext.user.lastName = userObject.firstName,
+              // myContext.user.email = userObject.firstName,
+              //  myContext.user.password = userObject.firstName,
+               myContext.setuserObject(userObject);
               console.log("mycontext user after signup: ", myContext.user)
-              // window.location.href = '/search'
+              setredirect("/search")
             })     
         }
     };
-
+  if (redirect) {
+    return <Redirect to={{ pathname: redirect }} />
+  }
+  else {
     return (
-        <div className="login">
+      <div className="login">
         <div className="container zindex1">
           <div className="row zindex1">
-            <div className="col-md-3 zindex1"></div> 
+            <div className="col-md-3 zindex1"></div>
             <div className="col-md-6 zindex1" >
               <Card className="zindex1" title="Welcome to mycookbook">
-                <form className="zindex1" style={{marginTop: 10}}>
+                <form className="zindex1" style={{ marginTop: 10 }}>
                   <h1>Register for mycookbook!</h1>
                   <label htmlFor="username">First name: </label>
                   <Input
@@ -90,12 +95,13 @@ function Signup() {
                   <Link to="/login">Login Here</Link>
                   <FormBtn onClick={handleFormSubmit}>Register</FormBtn>
                 </form>
-              </Card>            
-              </div>
+              </Card>
+            </div>
           </div>
         </div>
         
-        </div>
-     )
+      </div>
+    )
+  }
 }
 export default Signup
