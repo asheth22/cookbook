@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cloneElement } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import AppContext from '../AppContext';
@@ -9,6 +9,7 @@ function Navbar() {
     
     const myContext = useContext(AppContext);
     console.log("mycontext inside Navbar: ", myContext.user)
+    console.log("mycontect logged: ", myContext.logged)
 
     return (
       

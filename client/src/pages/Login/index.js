@@ -17,10 +17,11 @@ function Login() {
         firstName: "",
         lastName: "",
         email: "",
-        password: "",
-        redirectTo: ""
+        password: "",       
       })
-
+    
+  const [redirect, setredirect] = useState("")
+  
     const handleChange = event => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -39,6 +40,7 @@ function Login() {
             password: userObject.password
           })
             .then(res => {
+              
               console.log(res.user.email);
               myContext.setuserObject(res.user);
               myContext.user.firstName = res.user.firstName;
@@ -48,18 +50,21 @@ function Login() {
               console.log("mycontext user after login: ", myContext.user)
               myContext.setuserObject(res.user);
               console.log("mycontext user setUserObject: ", myContext.user)
-              window.location.href = '/search'
+              setredirect("/search")
             })               
         }
   };
   
-  useEffect(() => {   
+    useEffect(() => {   
+        
+      console.log("mycontect variables registreed: ", myContext.registeredUser);
+      console.log("mycontect variables registreed: ", myContext.user);
       
-    console.log("mycontect variables registreed: ", myContext.registeredUser);
-    console.log("mycontect variables registreed: ", myContext.user);
-    
-    }, []);
-
+      }, []);
+     if (redirect) {
+      return <Redirect to={{ pathname: redirect }} />   
+  }
+  else {
     return (
         <div className="login">
         <div className="container zindex1">
@@ -89,6 +94,8 @@ function Login() {
                   
                   <Link to="/">Signup</Link>
                   <FormBtn onClick={handleFormSubmit}>login</FormBtn>
+                  <Redirect to = "/"></Redirect>
+                  
                 </form>
               </Card>            
               </div>
@@ -96,6 +103,6 @@ function Login() {
         </div>
         
         </div>
-     )
+     )}
 }
 export default Login
