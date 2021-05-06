@@ -19,9 +19,9 @@ import AUTH from "./utils/AUTH";
 
 function App() {  
     const [userObject, setuserObject] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: "test",
+        lastName: "test",
+        email: "test@abc.com",
         password: "",       
       })
     const [loggedIn, setloggedIn] = useState(false);    
@@ -30,7 +30,7 @@ function App() {
 
     }   
     const userState = {
-        registeredUser: loggedIn,
+        logged: loggedIn,
         user: userObject,
         setuserObject,
         setloggedIn
@@ -52,8 +52,10 @@ function App() {
         </div>
         </Router>
         </AppContext.Provider> 
-    )
+  )
+  
      
 };
 
 export default App;
+// export default userState(App, userState);
