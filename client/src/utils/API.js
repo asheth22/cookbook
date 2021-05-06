@@ -16,8 +16,8 @@ export default {
     return axios.post("/api/recipes", recipeData).then(result => result.data);
   },
   // Get the saved a books from the database
-  savedRecipes: function () {
-    console.log("saved recipes")
+  savedRecipes: function (email) {
+    console.log("saved recipes: ", email)
     return axios.get("/api/recipes").then(result => result.data);
   }
 };

@@ -21,11 +21,15 @@ function Search() {
       })
         
     useEffect(() => {
-        console.log("Inside useEffect on search.js", myContext.user)
-        API.savedRecipes()
+        console.log("Inside useEffect on search.js", myContext.user.email)
+        API.savedRecipes({
+            email: myContext.user.email                     
+          })
             .then(savedRecipes => setrecipes(savedRecipes))          
         }, []); 
 
+      
+        
     const makeRecipes = RecipeData => {
         console.log("Recipedata: ", RecipeData)
         
