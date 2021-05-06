@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from '../../components/AppContext';
-
 import Card from "../../components/Card";
-
 // import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
