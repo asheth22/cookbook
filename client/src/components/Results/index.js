@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 import API from "../../utils/API";
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 
 class Results extends Component {
-
+    
     state = {
         savedrecipes: [],
     }
@@ -17,15 +19,17 @@ class Results extends Component {
     }
 
     handleSave = recipe => {
+        console.log("input properties: ", this.props.recipes[0].email)
         console.log("Inside handle save with input: ", recipe)
         console.log("saving recipe_id ", recipe._id)
         if (this.state.savedrecipes.map(recipe => recipe._id).includes(recipe._id)) {
-            console.log("Inside if")
+            console.log("deleting existing recipeId", recipe._id)
             API.deleterecipe(recipe._id)
                 .then(deletedrecipe => this.setState({ savedrecipes: this.state.savedrecipes.filter(recipe => recipe._id !== deletedrecipe._id) }))
                 .catch(err => console.error(err));
-        } else {
-            console.log("inside else", recipe)
+        }
+            
+            console.log("Noew saving recipe", recipe)
             API.saveRecipe(recipe)
                 .then(savedrecipe => {
                     console.log("after API ", recipe);
@@ -33,7 +37,7 @@ class Results extends Component {
                    
                 })
                 .catch(err => console.error(err));
-        }
+        
     }
        
     render() {
