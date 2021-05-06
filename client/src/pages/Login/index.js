@@ -90,7 +90,7 @@ function Login() {
                     // onChange={myContext.setUser}
                   />
                   
-                  <Link to="/">Signup</Link>
+                  <Link to="/Signup">Signup</Link>
                   <FormBtn onClick={handleFormSubmit}>login</FormBtn>
                   <Redirect to = "/"></Redirect>
                   

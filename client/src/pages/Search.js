@@ -22,17 +22,13 @@ function Search() {
         
     useEffect(() => {
         console.log("Inside useEffect on search.js", myContext.user.email)
-        API.savedRecipes({
-            email: myContext.user.email                     
-          })
+        API.savedRecipes(myContext.user.email)           
+          
             .then(savedRecipes => setrecipes(savedRecipes))          
-        }, []); 
-
-      
+        }, []);       
         
     const makeRecipes = RecipeData => {
-        console.log("Recipedata: ", RecipeData)
-        
+        console.log("Recipedata: ", RecipeData)        
         return {
                       
                 _id: RecipeData.id,
@@ -40,11 +36,9 @@ function Search() {
                 image: RecipeData.image,
                 summary:  RecipeData.summary, 
                 sourceURL: RecipeData.spoonacularSourceUrl,
-                email: myContext.user.email
-            
+                email: myContext.user.email            
         }
     }
-
     const searchRecipe = query => {
         console.log("Inside search recipe: ", query)
         console.log("mycontect inside search recipe: ", myContext.user)
