@@ -14,9 +14,9 @@ module.exports = {
   },
 
   find: function (req, res) {
-    console.log("inside find: ", req.body)
+    console.log("inside find: ", req.query.email)
     db.Recipe
-      .find({email: "tues@abc.com"})
+      .find({email: req.query.email})
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.error(err)

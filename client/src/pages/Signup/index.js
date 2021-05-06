@@ -92,7 +92,7 @@ function Signup() {
                     onChange={handleChange}
                   />
                   
-                  <Link to="/login">Login Here</Link>
+                  <Link to="/">Login Here</Link>
                   <FormBtn onClick={handleFormSubmit}>Register</FormBtn>
                 </form>
               </Card>
