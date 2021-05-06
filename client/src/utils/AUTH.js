@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets user info
-  getUser: function() {
+  getUser: function () {
+    console.log("trying to getUser")
     return axios.get('/auth/user').then(result => result.data);
   },
   // Logs the user out

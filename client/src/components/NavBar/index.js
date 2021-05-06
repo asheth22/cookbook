@@ -1,12 +1,18 @@
-import React from "react";
+import React, { cloneElement } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 import "./style.css";
 import image from "./logo.png";
 
 function Navbar() {
+    
+    const myContext = useContext(AppContext);
+    console.log("mycontext inside Navbar: ", myContext.user)
+    console.log("mycontect logged: ", myContext.logged)
+
     return (
-
-
+      
         <nav className="navbar navbar-expand-lg text-light">
             <div className="container">
             <a className="navbar-brand" href="/"> <img src={image}  height="50px" width="100px"  alt=""/></a>

@@ -1,20 +1,25 @@
 
 import React, { useEffect, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from '../../components/AppContext';
 import Card from "../../components/Card";
 // import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
 function Login() {
 
+  const myContext = useContext(AppContext);
+
     const [userObject, setuserObject] = useState({
         firstName: "",
         lastName: "",
         email: "",
-        password: "",
-        redirectTo: ""
+        password: "",       
       })
-
+    
+  const [redirect, setredirect] = useState("")
+  
     const handleChange = event => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -33,12 +38,31 @@ function Login() {
             password: userObject.password
           })
             .then(res => {
-              console.log(res);            
-              window.location.href = '/search'
+              
+              console.log(res.user.email);
+              myContext.setuserObject(res.user);
+              myContext.user.firstName = res.user.firstName;
+              myContext.user.lastName = res.user.lastName;
+              myContext.user.email = res.user.email;
+              myContext.user.password = res.user.password;
+              console.log("mycontext user after login: ", myContext.user)
+              myContext.setuserObject(res.user);
+              console.log("mycontext user setUserObject: ", myContext.user)
+              setredirect("/search")
             })               
         }
-    };
-
+  };
+  
+    useEffect(() => {   
+        
+      console.log("mycontect variables registreed: ", myContext.registeredUser);
+      console.log("mycontect variables registreed: ", myContext.user);
+      
+      }, []);
+     if (redirect) {
+      return <Redirect to={{ pathname: redirect }} />   
+  }
+  else {
     return (
         <div className="login">
         <div className="container zindex1">
@@ -55,6 +79,7 @@ function Login() {
                     name="email"
                     value={userObject.email}
                     onChange={handleChange}
+                    // onChange={myContext.setUser}
                   />
                   <label htmlFor="password">Password: </label>
                   <Input
@@ -62,10 +87,13 @@ function Login() {
                     name="password"
                     value={userObject.password}
                     onChange={handleChange}
+                    // onChange={myContext.setUser}
                   />
                   
-                  <Link to="/">Signup</Link>
+                  <Link to="/Signup">Signup</Link>
                   <FormBtn onClick={handleFormSubmit}>login</FormBtn>
+                  <Redirect to = "/"></Redirect>
+                  
                 </form>
               </Card>            
               </div>
@@ -73,6 +101,6 @@ function Login() {
         </div>
         
         </div>
-     )
+     )}
 }
 export default Login
