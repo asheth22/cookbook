@@ -8,10 +8,11 @@ import API from "../../utils/API";
 
 function Results({ recipes }) {
     const [savedrecipes, setsavedrecipes] = useState([]);
+    const myContext = useContext(AppContext);
     
     useEffect(() => {
-        console.log("inside results componenet mount", recipes)
-        API.savedRecipes()
+        console.log("inside results componenet mount", recipes, " email ", myContext.user.email)
+        API.savedRecipes(myContext.user.email)
             .then(savedRecipes => setsavedrecipes(savedRecipes))
             .catch(err => console.error(err));
         }, []); 
@@ -29,8 +30,8 @@ function Results({ recipes }) {
             API.saveRecipe(recipe)
                 .then(savedrecipe => {
                     console.log("after API ", recipe);
-                    setsavedrecipes(savedrecipes.concat([savedrecipe]));
-
+                    setsavedrecipes(savedrecipes.concat(savedrecipe));
+                    console.log("savedrecipes ", savedrecipes)
                 })
                 .catch(err => console.error(err));
         }
