@@ -15,6 +15,7 @@ import Saved from "./pages/Saved";
 import "./App.css";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import AUTH from "./utils/AUTH";
 
 function App() {  
@@ -47,7 +48,7 @@ function App() {
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
             <Route exact path="/Signup" component={Signup} /> 
-            <Route exact path="/noMatch" component={NoMatch} />
+            <Route exact path="/logout" component={Logout} />
           </Wrapper>
         </div>
         </Router>

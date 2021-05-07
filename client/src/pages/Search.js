@@ -46,8 +46,7 @@ function Search() {
             .then(res => {
                 console.log(res.data.results);
                 console.log("before setrecipes", recipes)
-                const newRecipes = res.data.results.map(RecipeData => makeRecipes(RecipeData))
-                // setrecipes({ recipes: res.data.results.map(RecipeData => makeRecipes(RecipeData)) })
+                const newRecipes = res.data.results.map(RecipeData => makeRecipes(RecipeData))                
                 console.log("after makerecipes", newRecipes)
                 setrecipes(newRecipes)
                 console.log("recipes set:", recipes)
