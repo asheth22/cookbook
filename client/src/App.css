@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-.mainpage {
+.mainpage, html {
   background-image: url("appbackground.png");
 }
 .App-logo {
