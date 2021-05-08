@@ -76,4 +76,6 @@ Santosh Malaki - Champion
 
 ![Click on Save](./pictures/search_page_results_save.png)
 
+![Blank Saved Recipes](./pictures/my_saved_recipes_blank.png)
+
 ![Saved Recipes](./pictures/my_saved_recipes.png)
