@@ -7,6 +7,8 @@ My Cookbook is a React-based app that allows users to search for recipes and sav
 This App is deployed on Heroku: [My Cookbook](https://immense-chamber-63705.herokuapp.com/) 
 <!-- Remember to change this -->
 
+Simply navigate to the above webpage to use the application.
+
 ## Application Features
 In this application the user is able to search for recipes using Spoonacular's API. The application will display the results. The user can view the recipe summary and save the books. The saved books can be viewed using the "Saved" option from the Navigation bar.
 
@@ -29,9 +31,29 @@ The app uses the following technologies:
 
 ## Usage
 
+Travel to the application's URL here: <!-- Add URL here -->
 
-`Save` button to save the recipe to the database.<br>
-Click on the recipe to be taken to the recipe's webpage.
+Users will first arrive at the login page. If the user has an existing account, they can log in using their email and password. If not, the user should click on the sign up link on the bottom-left corner of the form to make an account. Once on the signup page, new users will have to enter a first and last name, email, and password to create their account.
+
+Once the user has logged in, they will arrive at the search page where they will be able to use the search field to enter search terms and be be presented with recipes.
+
+Each recipe search result features a picture of the dish, a short description of the recipe, and two buttons allowing the user to either view the full recipe or save it to the database.
+
+Clicking on the view button will take the user to a webpage containing the full recipe. 
+
+Clicking on the save button will save the listing to the user's account. The user will be able to see the saved listings by clicking on the mycookbook tab in the navigation bar on the top of the page.
+
+Users can log out of their account by clicking on the logout tab in the top right of the navigation bar.
+
+## Contributors
+
+Anjali Sheth - Rockstar
+
+Jamie Burch - Genius
+
+Antonio Decastro - Ninja
+
+Santosh Malaki - Champion
 
 ## Screenshots
 ![Blank Signup Page](./pictures/sign_up_blank.png)
