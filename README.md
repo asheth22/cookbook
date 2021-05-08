@@ -4,7 +4,7 @@
 My Cookbook is a React-based app that allows users to search for recipes and save them for future reference. 
 
 ## Installation
-This App is deployed on Heroku: [My Cookbook](https://immense-chamber-63705.herokuapp.com/) 
+This App is deployed on Heroku: [My Cookbook](https://frozen-falls-05820.herokuapp.com/) 
 <!-- Remember to change this -->
 
 Simply navigate to the above webpage to use the application.
@@ -31,7 +31,7 @@ The app uses the following technologies:
 
 ## Usage
 
-Travel to the application's URL here: <!-- Add URL here -->
+Travel to the application's URL here: https://frozen-falls-05820.herokuapp.com/
 
 Users will first arrive at the login page. If the user has an existing account, they can log in using their email and password. If not, the user should click on the sign up link on the bottom-left corner of the form to make an account. Once on the signup page, new users will have to enter a first and last name, email, and password to create their account.
 
