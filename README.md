@@ -13,13 +13,19 @@ In this application the user is able to search for recipes using Spoonacular's A
 ## Technologies used
 The app uses the following technologies:
 
-> MongoDB
-> Spoonacular API
-> Passport
-> React
-> Bootstrap
-> Babel
-> react-html-parser
+- MongoDB
+
+- Spoonacular API
+
+- Passport
+
+- React
+
+- Bootstrap
+
+- Babel
+
+- react-html-parser
 
 ## Usage
 
@@ -28,7 +34,7 @@ The app uses the following technologies:
 Click on the recipe to be taken to the recipe's webpage.
 
 ## Screenshots
-![Blank Signup Page](./pictures/signup_blank)
+![Blank Signup Page](pictures/signup_blank)
 ![Filled Signup Page](./pictures/signup_filled)
 ![Blank Login Page](./pictures/login_blank)
 ![Filled Login Page](./pictures/login_filled)
