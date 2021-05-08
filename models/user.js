@@ -10,7 +10,7 @@ const userSchema = new Schema({
   email: { type: String, unique: true, required: false },
   password: { type: String, unique: false, required: false },
  
-  joinRecipe : [{type: Schema.Types.ObjectId, ref: 'Recipe' }], //trying to get user view to work
+  joinRecipe : [{type: Schema.Types.ObjectId, ref: 'Recipe' }],
   
 });
 
@@ -27,7 +27,6 @@ userSchema.methods = {
 // Define hooks for pre-saving
 userSchema.pre('save', function(next) {
 	if (!this.password) {
-		console.log('No password provided!');
 		next();
 	} else {
 		this.password = this.hashPassword(this.password);
