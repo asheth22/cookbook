@@ -50,6 +50,7 @@ function App() {
           <Header />
           <Wrapper>
             <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
             <Route exact path="/Signup" component={Signup} /> 
