@@ -21,8 +21,8 @@ function Results({ recipes }) {
         console.log("Inside handle save with input: ", recipe)
         console.log("saving recipe_id ", recipe._id)
         if (savedrecipes.map(recipe => recipe._id).includes(recipe._id)) {
-            console.log("Inside if")
-            API.deleterecipe(recipe._id)
+            console.log("inside delete recipes: ", recipe._id)
+            API.deleteRecipe(recipe._id)                
                 .then(deletedrecipe => setsavedrecipes(savedrecipes.filter(recipe => recipe._id !== deletedrecipe._id)))
                 .catch(err => console.error(err));
         } else {

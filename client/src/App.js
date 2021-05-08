@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 // import { Route, Switch } from 'react-router-dom';
 import AppContext from './components/AppContext';
+import BackgroundSlider from 'react-background-slider'
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
@@ -17,6 +18,10 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import AUTH from "./utils/AUTH";
+
+
+import image1 from "../src/assets/foodimg1.png"
+import image2 from "../src/assets/foodimg2.png"
 
 function App() {  
     const [userObject, setuserObject] = useState({
@@ -50,6 +55,7 @@ function App() {
             <Route exact path="/Signup" component={Signup} /> 
             <Route exact path="/logout" component={Logout} />
           </Wrapper>
+        
         </div>
         </Router>
         </AppContext.Provider> 
