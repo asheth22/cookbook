@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from "../components/AppContext"
-
 import API from "../utils/API";
 import Results from "../components/Results";
-// import "./style.css";
+
 
 function Saved() {
     const myContext = useContext(AppContext);
@@ -20,7 +19,6 @@ function Saved() {
  
  
     useEffect(() => {
-        console.log("Inside useEffect saved.js", myContext.user.email)
         API.savedRecipes(myContext.user.email)
             .then(Recipes => setsavedRecipes(Recipes))          
         }, []); 
