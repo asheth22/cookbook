@@ -4,9 +4,9 @@ import { Redirect, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from '../../components/AppContext';
 import Card from "../../components/Card";
-// import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
+
 function Login() {
 
   const myContext = useContext(AppContext);
@@ -30,7 +30,6 @@ function Login() {
     };
 
   const handleFormSubmit = event => {
-      console.log("Inside login form submit: ", userObject)
         event.preventDefault();
         if (userObject.email && userObject.password) {
           AUTH.login({
@@ -38,25 +37,18 @@ function Login() {
             password: userObject.password
           })
             .then(res => {
-              
-              console.log(res.user.email);
               myContext.setuserObject(res.user);
               myContext.user.firstName = res.user.firstName;
               myContext.user.lastName = res.user.lastName;
               myContext.user.email = res.user.email;
               myContext.user.password = res.user.password;
-              console.log("mycontext user after login: ", myContext.user)
               myContext.setuserObject(res.user);
-              console.log("mycontext user setUserObject: ", myContext.user)
               setredirect("/search")
             })               
         }
   };
   
     useEffect(() => {   
-        
-      console.log("mycontect variables registreed: ", myContext.registeredUser);
-      console.log("mycontect variables registreed: ", myContext.user);
       
       }, []);
      if (redirect) {

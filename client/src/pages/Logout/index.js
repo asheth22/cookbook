@@ -4,7 +4,6 @@ import { Redirect, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from '../../components/AppContext';
 import Card from "../../components/Card";
-// import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
 function Login() {
@@ -22,16 +21,12 @@ function Login() {
   
   
     useEffect(() => {           
-      console.log("mycontect variables registreed: ", myContext.user);
       AUTH.logout().then(response => {
-        console.log('successfully logged out!');
         myContext.user.firstName = "";
               myContext.user.lastName = "";
               myContext.user.email = "";
               myContext.user.password = "";
-              console.log("mycontext user after logout: ", myContext.user)
               myContext.setuserObject({});
-              console.log(response.status);
         setredirect("/") 
       });
     }, []);

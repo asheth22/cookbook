@@ -8,9 +8,7 @@ import image from "./logo.png";
 function Navbar() {
     
     const myContext = useContext(AppContext);
-    console.log("mycontext inside Navbar: ", myContext.user)
-    console.log("mycontect logged: ", myContext.logged)
-
+   
     if (!myContext.user.email) {
     return (
       

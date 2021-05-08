@@ -3,7 +3,6 @@ import { Redirect, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from '../../components/AppContext';
 import Card from "../../components/Card";
-// import Input from "../../Input";
 import { Input, FormBtn } from '../../components/FormSignup';
 import AUTH from '../../utils/AUTH';
 function Signup() {
@@ -27,7 +26,6 @@ function Signup() {
     };
 
     const handleFormSubmit = event => {
-        console.log("Inside signup form submit ", userObject)
         event.preventDefault();
         if (userObject.email && userObject.password) {
             AUTH.signup({
@@ -40,12 +38,7 @@ function Signup() {
                console.log(res);
                myContext.setuserObject(userObject);
                console.log("userobject", userObject)
-              // myContext.user.firstName = userObject.firstName,
-              // myContext.user.lastName = userObject.firstName,
-              // myContext.user.email = userObject.firstName,
-              //  myContext.user.password = userObject.firstName,
                myContext.setuserObject(userObject);
-              console.log("mycontext user after signup: ", myContext.user)
               setredirect("/search")
             })     
         }
