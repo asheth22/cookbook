@@ -1,9 +1,11 @@
 .App {
   text-align: center;
 }
-.mainpage {
-  background-image: url("appbackground.png");
+/* full background */
+.mainpage, html {
+  background-image: url("appbackground.png"); 
 }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
