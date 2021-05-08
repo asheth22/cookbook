@@ -25,9 +25,9 @@ import image2 from "../src/assets/foodimg2.png"
 
 function App() {  
     const [userObject, setuserObject] = useState({
-        firstName: "test",
-        lastName: "test",
-        email: "test@abc.com",
+        firstName: "",
+        lastName: "",
+        email: "",
         password: "",       
       })
     const [loggedIn, setloggedIn] = useState(false);    

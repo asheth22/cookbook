@@ -25,7 +25,13 @@ function Login() {
       console.log("mycontect variables registreed: ", myContext.user);
       AUTH.logout().then(response => {
         console.log('successfully logged out!');
-        console.log(response.status);
+        myContext.user.firstName = "";
+              myContext.user.lastName = "";
+              myContext.user.email = "";
+              myContext.user.password = "";
+              console.log("mycontext user after logout: ", myContext.user)
+              myContext.setuserObject({});
+              console.log(response.status);
         setredirect("/") 
       });
     }, []);
