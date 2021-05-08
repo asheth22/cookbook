@@ -34,13 +34,13 @@ The app uses the following technologies:
 Click on the recipe to be taken to the recipe's webpage.
 
 ## Screenshots
-![Blank Signup Page](pictures/signup_blank)
-![Filled Signup Page](./pictures/signup_filled)
-![Blank Login Page](./pictures/login_blank)
-![Filled Login Page](./pictures/login_filled)
-![Blank Search Page](./pictures/search_blank)
-![Search Results](./pictures/search_results)
-![Click on View](./pictures/search_results_view)
-![View Full Recipe](./pictures/goto_recipe)
-![Click on Save](./pictures/search_results_save)
-![Saved Recipes](./pictures/saved_recipes)
+![Blank Signup Page](pictures/sign_up_blank)
+![Filled Signup Page](./pictures/sign_up_filled)
+![Blank Login Page](./pictures/log_in_blank)
+![Filled Login Page](./pictures/log_in_filled)
+![Blank Search Page](./pictures/search_page_blank)
+![Search Results](./pictures/search_page_results)
+![Click on View](./pictures/search_page_results_view)
+![View Full Recipe](./pictures/go_to_recipe)
+![Click on Save](./pictures/search_page_results_save)
+![Saved Recipes](./pictures/my_saved_recipes)
