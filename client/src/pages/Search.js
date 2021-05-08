@@ -21,14 +21,12 @@ function Search() {
       })
         
     useEffect(() => {
-        console.log("Inside useEffect on search.js", myContext.user.email)
         API.savedRecipes(myContext.user.email)           
           
             .then(savedRecipes => setrecipes(savedRecipes))          
         }, []);       
         
-    const makeRecipes = RecipeData => {
-        console.log("Recipedata: ", RecipeData)        
+    const makeRecipes = RecipeData => {      
         return {
                       
                 _id: RecipeData.id,
@@ -40,16 +38,10 @@ function Search() {
         }
     }
     const searchRecipe = query => {
-        console.log("Inside search recipe: ", query)
-        console.log("mycontect inside search recipe: ", myContext.user)
         API.getRecipe(query)
             .then(res => {
-                console.log(res.data.results);
-                console.log("before setrecipes", recipes)
                 const newRecipes = res.data.results.map(RecipeData => makeRecipes(RecipeData))                
-                console.log("after makerecipes", newRecipes)
                 setrecipes(newRecipes)
-                console.log("recipes set:", recipes)
             })
             
     };
@@ -58,14 +50,11 @@ function Search() {
         const name = event.target.name;
         const inputValue = event.target.value;
         setvalue(inputValue)
-        console.log("searcing for: ", inputValue);
     };
 
     const handleFormSubmit = event => {
-        console.log("inside form submit");
         event.preventDefault();
         searchRecipe(value);
-        console.log("Done with recipe search", recipes)
     };
 
  

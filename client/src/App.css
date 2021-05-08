@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 /* full background */
 .mainpage, html {
   background-image: url("appbackground.png"); 

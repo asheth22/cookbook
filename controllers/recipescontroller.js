@@ -1,10 +1,8 @@
 const db = require("../models");
-console.log("inside recipe controller")
 // Defining methods for the booksController
 module.exports = {
   findAll: function (req, res) {
-    console.log("inside findall: ", req.body)
-    db.Recipe
+      db.Recipe
       .find(req.query)      
       .then(dbModel => res.json(dbModel))
       .catch(err => {
@@ -14,7 +12,6 @@ module.exports = {
   },
 
   find: function (req, res) {
-    console.log("inside find: ", req.query.email)
     db.Recipe
       .find({email: req.query.email})
       .then(dbModel => res.json(dbModel))
@@ -33,7 +30,6 @@ module.exports = {
       });
   },
   create: function (req, res) {
-    console.log("inside create: ", req.body)
     db.Recipe
       .create(req.body)
       .then(dbModel => res.json(dbModel))

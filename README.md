@@ -5,7 +5,7 @@ My Cookbook is a React-based app that allows users to search for recipes and sav
 
 ## Installation
 This App is deployed on Heroku: [My Cookbook](https://frozen-falls-05820.herokuapp.com/) 
-<!-- Remember to change this -->
+
 
 Simply navigate to the above webpage to use the application.
 
@@ -28,6 +28,8 @@ The app uses the following technologies:
 - Babel
 
 - react-html-parser
+
+- Conditional Rendering
 
 ## Usage
 
@@ -73,5 +75,7 @@ Santosh Malaki - Champion
 ![View Full Recipe](./pictures/go_to_recipe.png)
 
 ![Click on Save](./pictures/search_page_results_save.png)
+
+![Blank Saved Recipes](./pictures/my_saved_recipes_blank.png)
 
 ![Saved Recipes](./pictures/my_saved_recipes.png)
